@@ -1,12 +1,18 @@
-function GroupForm({ onSubmit, initialData = {} }) {
-  const [name, setName] = useState(initialData.name || "");
-  const [url, setUrl] = useState(initialData.url || "");
-  const [description, setDescription] = useState(initialData.description || "");
-  const [image, setImage] = useState(initialData.image || "");
+import { useState } from 'react'
+
+function GroupForm({ onSubmit, initialData }) {
+  const [formData, setFormData] = useState(initialData)
+
+  function handleChange(e) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value,
+    }))
+  }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    onSubmit({ name, url, description, image });
+    e.preventDefault()
+    onSubmit(formData)
   }
 
   return (
@@ -16,8 +22,8 @@ function GroupForm({ onSubmit, initialData = {} }) {
           Name:
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={formData.name}
+            onChange={handleChange}
             required
           />
         </label>
@@ -26,8 +32,8 @@ function GroupForm({ onSubmit, initialData = {} }) {
           TikTok Link:
           <input
             type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            value={formData.url}
+            onChange={handleChange}
             required
           />
         </label>
@@ -36,8 +42,8 @@ function GroupForm({ onSubmit, initialData = {} }) {
           Description:
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={formData.description}
+            onChange={handleChange}
           />
         </label>
 
@@ -45,8 +51,8 @@ function GroupForm({ onSubmit, initialData = {} }) {
           Image:
           <input
             type="url"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={formData.image}
+            onChange={handleChange}
             required
           />
         </label>
@@ -54,7 +60,7 @@ function GroupForm({ onSubmit, initialData = {} }) {
         <button type="submit">Submit</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default GroupForm;
+export default GroupForm
