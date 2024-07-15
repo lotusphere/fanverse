@@ -16,13 +16,29 @@ The primary goal of Fanverse is to allow users to:
 ### Homepage
 - **Display K-pop Groups**: The homepage showcases at least five K-pop groups.
   - **Group Item**: Each K-pop group item includes:
-    - `Name`: The name of the K-pop group.
-    - `URL`: A link to their official channel or page.
-    - `Description`: A short description of the group.
+    - `name`: The name of the K-pop group.
+    - `link`: A link to their official channel or page.
+    - `description`: A short description of the group.
 
 ### K-pop Group Details Page
 - **Unique URL**: Each K-pop group has its own unique URL for easy sharing and navigation.
 - **Details**: The details page includes:
-  - `Name`: The name of the K-pop group.
-  - `URL`: A link to their official channel or page.
-  - `Description`: A detailed description of the group.
+  - `name`: The name of the K-pop group.
+  - `link`: A link to their official channel or page.
+  - `description`: A detailed description of the group.
+
+### Add Group Page
+- **Add New K-pop Group**: Users can add a new K-pop group by entering:
+  - `name`: The name of the K-pop group.
+  - `link`: A link to their official channel or page.
+  - `description`: A short description of the group.
+  - `image`: An image of the K-pop group.
+- The new K-pop group then appears in the displayed list on the homepage.
+
+### Edit Group Page
+- **Edit K-pop Group**: Users can edit an existing K-pop group to change their:
+  - `name`: The name of the K-pop group.
+  - `link`: A link to their official channel or page.
+  - `description`: A short description of the group.
+  - `image`: An image of the K-pop group.
+- The updated information is reflected on the homepage and the details page.
