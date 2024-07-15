@@ -1,15 +1,17 @@
 import { useState } from 'react'
 
-function GroupForm({ onSubmit, initialData }) {
+function GroupForm({ onSubmit, initialData, errorMessage }) {
   const [formData, setFormData] = useState(initialData)
+  const [error, setError] = useState(errorMessage)
 
   function handleChange(e) {
+    setError('')
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }))
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault()
     onSubmit(formData)
@@ -21,6 +23,7 @@ function GroupForm({ onSubmit, initialData }) {
         <label>
           Name:
           <input
+            name="name"
             type="text"
             value={formData.name}
             onChange={handleChange}
@@ -31,6 +34,7 @@ function GroupForm({ onSubmit, initialData }) {
         <label>
           TikTok Link:
           <input
+            name="url"
             type="url"
             value={formData.url}
             onChange={handleChange}
@@ -41,6 +45,7 @@ function GroupForm({ onSubmit, initialData }) {
         <label>
           Description:
           <input
+            name="description"
             type="text"
             value={formData.description}
             onChange={handleChange}
@@ -50,6 +55,7 @@ function GroupForm({ onSubmit, initialData }) {
         <label>
           Image:
           <input
+            name="image"
             type="url"
             value={formData.image}
             onChange={handleChange}
@@ -59,6 +65,7 @@ function GroupForm({ onSubmit, initialData }) {
 
         <button type="submit">Submit</button>
       </form>
+      { error && <p className="error">{error}</p> }
     </div>
   )
 }
