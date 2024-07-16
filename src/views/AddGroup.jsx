@@ -12,7 +12,7 @@ function AddGroup() {
   })
   const [errorMessage, setErrorMessage] = useState('')
 
-  async function addGroup(formData) {
+  async function fetchAddGroup(formData) {
     const { data, error } = await supabase
       .from('groups')
       .insert([formData])
@@ -25,7 +25,7 @@ function AddGroup() {
   return (
     <>
       <GroupForm 
-        onSubmit={addGroup}
+        onSubmit={fetchAddGroup}
         initialData={formData}
         errorMessage={errorMessage}
       />
