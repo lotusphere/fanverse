@@ -7,6 +7,17 @@ function GroupList() {
   const [loading, setLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
+  async function fetchDeleteGroup (id) {
+    const { error } = await supabase.from('groups').delete().eq('id', id);
+    
+    if (error) {
+      setErrorMessage(error.message);
+      return;
+    }
+
+    setGroupList(groupList.filter(group => group.id !== id));
+  }
+
   useEffect(() => {
     async function fetchGroups() {
       const { data, error } = await supabase.from('groups').select('*')
@@ -30,6 +41,7 @@ function GroupList() {
       <ul>
         {groupList.map((group) => (
           <Card key={group.id} group={group} />
+          // <Card key={group.id} group={group} onDelete={fetchDeleteGroup} />
         ))}
       </ul>
     </div>
