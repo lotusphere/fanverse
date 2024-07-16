@@ -29,7 +29,7 @@ function GroupList() {
     <div>
       <ul>
         {groupList.map((group) => (
-          <Card group={group} />
+          <Card key={group.id} group={group} />
         ))}
       </ul>
     </div>
