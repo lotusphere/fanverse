@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
+import Card from '../components/Card'
 
 function GroupList() {
   const [groupList, setGroupList] = useState([])
@@ -13,7 +14,6 @@ function GroupList() {
       if (error) {
         setErrorMessage(error.message)
       } else {
-        console.log(data)
         setGroupList(data)
       }
       setLoading(false)
@@ -29,14 +29,7 @@ function GroupList() {
     <div>
       <ul>
         {groupList.map((group) => (
-          <li key={group.id}>
-            <h2>{group.name}</h2>
-            <a href={group.url} target="_blank" rel="noopener noreferrer">
-              Visit
-            </a>
-            <p>{group.description}</p>
-            <img src={group.image} alt={group.name} />
-          </li>
+          <Card group={group} />
         ))}
       </ul>
     </div>
