@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Card({ group }) {
   return (
     <li className="card">
@@ -7,7 +9,7 @@ function Card({ group }) {
         <button className="discography-btn">TikTok</button>
       </a>
       <img src={group.image} alt={`img for ${group.name}`} />
-      {/* <button onClick={() => onDelete(group.id)}>Delete</button> */}
+      <Link to={`/groups/${group.id}`}>Details</Link>
     </li>
   )
 }
