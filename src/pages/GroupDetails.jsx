@@ -1,4 +1,5 @@
 import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
 
@@ -40,7 +41,7 @@ function GroupDetails() {
       </a>
       <p className="description">{group.description}</p>
 
-      <button>Edit</button>
+      <Link to={`/groups/${group.id}/edit`}>Edit</Link>
       <button onClick={() => onDelete(id)}>Delete</button>
     </div>
   )
