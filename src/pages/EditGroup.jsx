@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
 import GroupForm from '../components/GroupForm'
@@ -25,8 +26,8 @@ function EditGroup() {
     setLoading(false)
   }
 
-  async function fetchEditGroup() {
-    const { data, error } = await supabase.from('groups').update(group).eq('id', id)
+  async function fetchEditGroup(updatedGroup) {
+    const { data, error } = await supabase.from('groups').update(updatedGroup).eq('id', id).select()
 
     if (error) {
       setErrorMessage(error.message)
@@ -42,13 +43,14 @@ function EditGroup() {
   if (loading) return <p>Loading...</p>
 
   return (
-    <>
+    <div className="page">
       <GroupForm
         onSubmit={fetchEditGroup}
         initialData={group}
         errorMessage={errorMessage}
       />
-    </>
+      <Link to={`/groups/${group.id}`}><button>Cancel</button></Link>
+    </div>
   )
 }
 
