@@ -8,7 +8,6 @@ function GroupList() {
   const [loading, setLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
-
   useEffect(() => {
     async function fetchGroups() {
       const { data, error } = await supabase.from('groups').select('*')
@@ -28,8 +27,14 @@ function GroupList() {
   if (errorMessage) return <p>Error: {errorMessage}</p>
 
   return (
-    <div>
-      <Link to="/groups/new"><button>Add a group</button></Link>
+    <div className="home">
+      <div className="top-bar">
+        <h2>Fanverse</h2>
+        <Link to="/groups/new">
+          <button>Add a group</button>
+        </Link>
+      </div>
+
       <div className="card-list grid">
         {groupList.map((group) => (
           <Card key={group.id} group={group} />
