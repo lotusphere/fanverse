@@ -14,12 +14,13 @@ function AddGroup() {
   const navigate = useNavigate()
 
   async function fetchAddGroup(formData) {
-    const { data, error } = await supabase.from('groups').insert([formData])
+    const { data, error } = await supabase.from('groups').insert([formData]).select()
 
     if (error) {
       setErrorMessage(error.message)
     } else {
-      navigate(`/groups/${id}`)
+      console.log(data)
+      navigate(`/groups/${data[0].id}`)
     }
   }
 
