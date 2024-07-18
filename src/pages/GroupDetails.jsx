@@ -14,11 +14,7 @@ function GroupDetails() {
 
   async function fetchGroup() {
     dispatch({ type: ACTIONS.FETCH_LOADING })
-    const { data, error } = await supabase
-      .from('groups')
-      .select('*')
-      .eq('id', id)
-      .single()
+    const { data, error } = await supabase.from('groups').select('*').eq('id', id).single()
 
     if (error) {
       dispatch({ type: ACTIONS.FETCH_FAILURE, payload: error.message })

@@ -7,9 +7,6 @@ import { ACTIONS } from '../groupReducer'
 
 function Groups() {
   const { state, dispatch } = useGroupContext()
-  // const [groupList, setGroupList] = useState([])
-  // const [loading, setLoading] = useState(true)
-  // const [errorMessage, setErrorMessage] = useState('')
 
   async function fetchGroups() {
     dispatch({ type: ACTIONS.FETCH_LOADING })

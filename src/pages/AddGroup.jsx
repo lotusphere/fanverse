@@ -17,10 +17,7 @@ function AddGroup() {
   })
 
   async function fetchAddGroup(formData) {
-    const { data, error } = await supabase
-      .from('groups')
-      .insert([formData])
-      .select()
+    const { data, error } = await supabase.from('groups').insert([formData]).select()
 
     if (error) {
       setErrorMessage(error.message)

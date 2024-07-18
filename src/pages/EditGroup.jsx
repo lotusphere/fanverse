@@ -14,11 +14,7 @@ function EditGroup() {
 
   async function fetchGroup() {
     dispatch({ type: ACTIONS.FETCH_LOADING })
-    const { data, error } = await supabase
-      .from('groups')
-      .select('*')
-      .eq('id', id)
-      .single()
+    const { data, error } = await supabase.from('groups').select('*').eq('id', id).single()
 
     if (error) {
       dispatch({ type: ACTIONS.FETCH_FAILURE, payload: error.message })
@@ -29,11 +25,7 @@ function EditGroup() {
   }
 
   async function fetchEditGroup(updatedGroup) {
-    const { data, error } = await supabase
-      .from('groups')
-      .update(updatedGroup)
-      .eq('id', id)
-      .select()
+    const { data, error } = await supabase.from('groups').update(updatedGroup).eq('id', id).select()
 
     if (error) {
       setErrorMessage(error.message)
