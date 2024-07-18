@@ -44,7 +44,7 @@ function GroupDetails() {
 
   return (
     <div className="group">
-      <Link to="/">Back to Home</Link>
+      <Link to="/groups">Back to Home</Link>
       <img src={group.image} alt={`img for ${group.name}`} />
       <h3 className="name">{group.name}</h3>
       <a href={group.url} target="_blank">
