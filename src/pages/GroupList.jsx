@@ -43,7 +43,6 @@ function GroupList() {
       <ul>
         {groupList.map((group) => (
           <Card key={group.id} group={group} />
-          // <Card key={group.id} group={group} onDelete={fetchDeleteGroup} />
         ))}
       </ul>
     </div>
