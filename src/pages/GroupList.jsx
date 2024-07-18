@@ -8,16 +8,6 @@ function GroupList() {
   const [loading, setLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
-  async function fetchDeleteGroup (id) {
-    const { error } = await supabase.from('groups').delete().eq('id', id);
-    
-    if (error) {
-      setErrorMessage(error.message);
-      return;
-    }
-
-    setGroupList(groupList.filter(group => group.id !== id));
-  }
 
   useEffect(() => {
     async function fetchGroups() {
@@ -39,12 +29,12 @@ function GroupList() {
 
   return (
     <div>
-      <Link to="/groups/new">Add a group</Link>
-      <ul>
+      <Link to="/groups/new"><button>Add a group</button></Link>
+      <div className="card-list grid">
         {groupList.map((group) => (
           <Card key={group.id} group={group} />
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
