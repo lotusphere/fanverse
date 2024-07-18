@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
+import TikTokLogo from '../components/TikTokLogo'
 
 function GroupDetails() {
   const { id } = useParams()
@@ -43,17 +44,20 @@ function GroupDetails() {
   if (errorMessage) return <p>Error: {errorMessage}</p>
 
   return (
-    <div className="group">
-      <Link to="/groups">Back to Home</Link>
-      <img src={group.image} alt={`img for ${group.name}`} />
-      <h3 className="name">{group.name}</h3>
-      <a href={group.url} target="_blank">
-        <button>TikTok</button>
-      </a>
-      <p className="description">{group.description}</p>
-
-      <Link to={`/groups/${group.id}/edit`}>Edit</Link>
-      <button onClick={() => fetchDeleteGroup(id)}>Delete</button>
+    <div className="page">
+      <Link to="/">← Back to Home</Link>
+      <div className="group-details">
+        <img className="details-img" src={group.image} alt={`img for ${group.name}`} />
+        <div className="details-content">
+          <h2 className="name">{group.name}</h2>
+          <TikTokLogo url={group.url} />
+          <p className="description">{group.description}</p>
+          <div className="buttons">
+            <Link to={`/groups/${group.id}/edit`}><button>Edit</button></Link>
+            <button className="secondary" onClick={() => fetchDeleteGroup(id)}>Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
