@@ -3,7 +3,7 @@ import '@picocss/pico'
 
 function Card({ group }) {
   return (
-    <li className="card">
+    <div className="card">
       <article>
         <header>
           <p>{group.name}</p>
@@ -15,7 +15,7 @@ function Card({ group }) {
           <Link to={`/groups/${group.id}`}>Details</Link>
         </footer>
       </article>
-    </li>
+    </div>
   )
 }
 
