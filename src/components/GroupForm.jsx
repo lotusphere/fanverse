@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '@picocss/pico'
 
 function GroupForm({ onSubmit, initialData, errorMessage }) {
   const [formData, setFormData] = useState(initialData)
@@ -21,7 +22,7 @@ function GroupForm({ onSubmit, initialData, errorMessage }) {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
+          Name
           <input
             name="name"
             type="text"
@@ -32,7 +33,7 @@ function GroupForm({ onSubmit, initialData, errorMessage }) {
         </label>
 
         <label>
-          TikTok Link:
+          TikTok link
           <input
             name="url"
             type="url"
@@ -43,7 +44,7 @@ function GroupForm({ onSubmit, initialData, errorMessage }) {
         </label>
 
         <label>
-          Description:
+          Description
           <input
             name="description"
             type="text"
@@ -53,7 +54,7 @@ function GroupForm({ onSubmit, initialData, errorMessage }) {
         </label>
 
         <label>
-          Image:
+          Image link:
           <input
             name="image"
             type="url"
