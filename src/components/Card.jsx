@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '@picocss/pico'
-import tiktok from '../assets/tiktok.svg'
+import TikTokLogo from './TikTokLogo'
 
 function Card({ group }) {
   return (
@@ -8,9 +8,7 @@ function Card({ group }) {
       <article>
         <header>
           <div className="card-title">{group.name}</div>
-          <a href={group.url} target="_blank">
-            <img className="tiktok" src={tiktok} alt="logo for tiktok" />
-          </a>
+          <TikTokLogo url={group.url} />
         </header>
         <p className="description">{group.description}</p>
         <img className="card-img" src={group.image} alt={`img for ${group.name}`} />
