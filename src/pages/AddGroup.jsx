@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import GroupForm from '../components/GroupForm'
 
@@ -25,13 +26,14 @@ function AddGroup() {
   }
 
   return (
-    <>
+    <div className="page">
       <GroupForm
         onSubmit={fetchAddGroup}
         initialData={formData}
         errorMessage={errorMessage}
       />
-    </>
+      <div className="cancel-btn"><Link to="/">Cancel</Link></div>
+    </div>
   )
 }
 
