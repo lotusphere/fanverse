@@ -21,7 +21,7 @@ function AddGroup() {
       setErrorMessage(error.message)
     } else {
       console.log(data)
-      navigate(`/groups/${data[0].id}`)
+      navigate('/')
     }
   }
 
