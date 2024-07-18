@@ -35,7 +35,7 @@ function GroupList() {
         </Link>
       </div>
 
-      <div className="card-list grid">
+      <div className="card-list">
         {groupList.map((group) => (
           <Card key={group.id} group={group} />
         ))}
