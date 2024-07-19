@@ -1,17 +1,17 @@
 # Fanverse
 
-## Introduction
-Fanverse is a web application designed for K-pop enthusiasts in Kpop Server Index, a Discord server, to share and discover their favorite K-pop groups. It provides an interface to manage and display various K-pop groups, their details, and interactions. The application is built with React, Supabase, and React Router.
+## 1 Introduction
+Fanverse is a web application designed for K-pop enthusiasts in **Kpop Server Index**, a Discord server, to share and discover their favorite K-pop groups. It provides an interface to manage and display various K-pop groups, their details, and interactions.
 
 Whether the user is a fan of BTS's powerful performances 🔥, BLACKPINK's stunning visuals 🌸, or NCT's unique style 💚, Fanverse provides a platform to showcase and explore at least five K-pop groups worth following. Users can create, update, and delete groups, making it a dynamic and personalized K-pop experience.
 
-## Tech Stack
+## 2 Tech Stack
 - Frontend: React, Vite
 - Backend & Database: Supabase (PostgreSQL)
 - State Management: useReducer, useContext
 - Styling: Picocss
 
-## Features
+## 3 Features
 - List K-pop groups with details
 - Add new groups
 - Edit existing groups
@@ -24,21 +24,21 @@ Whether the user is a fan of BTS's powerful performances 🔥, BLACKPINK's stunn
 - npm
 - Supabase account
 
-### Install dependencies
+### 4 Install dependencies
 ```
 npm install
 ```
 
-### Set up environment variables
+### 5 Set up environment variables
 Raname `.env-sample` to `.env` in the root directory.
 Add your Supabase API URL and Anon Key to the .env file.
 
-### Start the dev server
+### 6 Start the dev server
 ```
 npm run dev
 ```
 
-## Pages
+## 7 Pages
 ### Homepage
 - **Display K-pop Groups**: The homepage showcases at least five K-pop groups.
   - **Group Item**: Each K-pop group item includes:
