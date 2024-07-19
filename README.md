@@ -18,27 +18,27 @@ Whether the user is a fan of BTS's powerful performances 🔥, BLACKPINK's stunn
 - Delete groups
 - View individual group details
 
-## Getting Started
+## 4 Getting Started
 ### Prerequisites
 - Node.js (v14 or higher)
 - npm
 - Supabase account
 
-### 4 Install dependencies
+### Install dependencies
 ```
 npm install
 ```
 
-### 5 Set up environment variables
+### Set up environment variables
 Raname `.env-sample` to `.env` in the root directory.
 Add your Supabase API URL and Anon Key to the .env file.
 
-### 6 Start the dev server
+### Start the dev server
 ```
 npm run dev
 ```
 
-## 7 Pages
+## 5 Pages
 ### Homepage
 - **Display K-pop Groups**: The homepage showcases at least five K-pop groups.
   - **Group Item**: Each K-pop group item includes:
