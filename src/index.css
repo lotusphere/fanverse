@@ -27,6 +27,10 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  color: #646cff;
+}
+
 ul, li {
   list-style-type: none;
   margin: 0;

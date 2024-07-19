@@ -2,17 +2,19 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import { supabase } from '../../supabase'
+import { ACTIONS } from '../groupReducer'
+import { useGroupContext } from '../GroupContext'
 import GroupForm from '../components/GroupForm'
 
 function AddGroup() {
+  const { state, dispatch } = useGroupContext()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     url: '',
     description: '',
     image: '',
   })
-  const [errorMessage, setErrorMessage] = useState('')
-  const navigate = useNavigate()
 
   async function fetchAddGroup(formData) {
     const { data, error } = await supabase.from('groups').insert([formData]).select()
@@ -20,8 +22,8 @@ function AddGroup() {
     if (error) {
       setErrorMessage(error.message)
     } else {
-      console.log(data)
-      navigate(`/groups/${data[0].id}`)
+      dispatch({ type: ACTIONS.ADD_GROUP, payload: data[0] })
+      navigate('/')
     }
   }
 
@@ -30,9 +32,11 @@ function AddGroup() {
       <GroupForm
         onSubmit={fetchAddGroup}
         initialData={formData}
-        errorMessage={errorMessage}
+        errorMessage={state.errorMessage}
       />
-      <div className="cancel-btn"><Link to="/">Cancel</Link></div>
+      <div className="cancel-btn">
+        <Link to="/">Cancel</Link>
+      </div>
     </div>
   )
 }

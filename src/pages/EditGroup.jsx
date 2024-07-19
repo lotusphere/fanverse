@@ -3,27 +3,25 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
 import GroupForm from '../components/GroupForm'
+import { useGroupContext } from '../GroupContext'
+import { ACTIONS } from '../groupReducer'
 
 function EditGroup() {
+  const { state, dispatch } = useGroupContext()
   const { id } = useParams()
   const navigate = useNavigate()
   const [group, setGroup] = useState({})
-  const [loading, setLoading] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('')
 
   async function fetchGroup() {
-    const { data, error } = await supabase
-      .from('groups')
-      .select('*')
-      .eq('id', id)
-      .single()
+    dispatch({ type: ACTIONS.FETCH_LOADING })
+    const { data, error } = await supabase.from('groups').select('*').eq('id', id).single()
 
     if (error) {
-      setErrorMessage(error.message)
+      dispatch({ type: ACTIONS.FETCH_FAILURE, payload: error.message })
     } else {
       setGroup(data)
+      dispatch({ type: ACTIONS.GET_GROUP, payload: data })
     }
-    setLoading(false)
   }
 
   async function fetchEditGroup(updatedGroup) {
@@ -32,24 +30,33 @@ function EditGroup() {
     if (error) {
       setErrorMessage(error.message)
     } else {
+      dispatch({ type: ACTIONS.UPDATE_GROUP, payload: data[0] })
       navigate(`/groups/${id}`)
     }
   }
 
   useEffect(() => {
-    fetchGroup()
+    const curGroup = state.groups.find((group) => group.id === id)
+    if (curGroup) {
+      setGroup(curGroup)
+    } else {
+      fetchGroup(id)
+    }
   }, [id])
 
-  if (loading) return <p>Loading...</p>
+  if (state.loading) return <p>Loading...</p>
+  if (state.errorMessage) return <p>Error: {state.errorMessage}</p>
 
   return (
     <div className="page">
       <GroupForm
         onSubmit={fetchEditGroup}
         initialData={group}
-        errorMessage={errorMessage}
+        errorMessage={state.errorMessage}
       />
-      <Link to={`/groups/${group.id}`}><button>Cancel</button></Link>
+      <Link to={`/groups/${group.id}`}>
+        <button>Cancel</button>
+      </Link>
     </div>
   )
 }
