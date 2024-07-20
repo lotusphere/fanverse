@@ -17,7 +17,10 @@ function AddGroup() {
   })
 
   async function fetchAddGroup(formData) {
-    const { data, error } = await supabase.from('groups').insert([formData]).select()
+    const { data, error } = await supabase
+      .from('groups')
+      .insert([formData])
+      .select()
 
     if (error) {
       setErrorMessage(error.message)
@@ -28,15 +31,13 @@ function AddGroup() {
   }
 
   return (
-    <div className="page">
+    <div className="page form-page">
       <GroupForm
         onSubmit={fetchAddGroup}
         initialData={formData}
         errorMessage={state.errorMessage}
       />
-      <div className="cancel-btn">
-        <Link to="/">Cancel</Link>
-      </div>
+      <Link to="/">Cancel</Link>
     </div>
   )
 }
