@@ -14,7 +14,11 @@ function EditGroup() {
 
   async function fetchGroup() {
     dispatch({ type: ACTIONS.FETCH_LOADING })
-    const { data, error } = await supabase.from('groups').select('*').eq('id', id).single()
+    const { data, error } = await supabase
+      .from('groups')
+      .select('*')
+      .eq('id', id)
+      .single()
 
     if (error) {
       dispatch({ type: ACTIONS.FETCH_FAILURE, payload: error.message })
@@ -25,7 +29,11 @@ function EditGroup() {
   }
 
   async function fetchEditGroup(updatedGroup) {
-    const { data, error } = await supabase.from('groups').update(updatedGroup).eq('id', id).select()
+    const { data, error } = await supabase
+      .from('groups')
+      .update(updatedGroup)
+      .eq('id', id)
+      .select()
 
     if (error) {
       setErrorMessage(error.message)
@@ -36,27 +44,20 @@ function EditGroup() {
   }
 
   useEffect(() => {
-    const curGroup = state.groups.find((group) => group.id === id)
-    if (curGroup) {
-      setGroup(curGroup)
-    } else {
-      fetchGroup(id)
-    }
+    fetchGroup(id)
   }, [id])
 
   if (state.loading) return <p>Loading...</p>
   if (state.errorMessage) return <p>Error: {state.errorMessage}</p>
 
   return (
-    <div className="page">
+    <div className="page form-page">
       <GroupForm
         onSubmit={fetchEditGroup}
         initialData={group}
         errorMessage={state.errorMessage}
       />
-      <Link to={`/groups/${group.id}`}>
-        <button>Cancel</button>
-      </Link>
+      <Link to={`/groups/${group.id}`}>Cancel</Link>
     </div>
   )
 }
