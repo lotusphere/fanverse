@@ -44,14 +44,14 @@ button:focus-visible {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .card-img {
   width: 100%;
   height: 8rem;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 0.5rem;
   object-fit: cover;
 }
 
@@ -114,4 +114,9 @@ button:focus-visible {
 .form-page button {
   padding: 0.6rem 1.2rem;
   background: #646cff;
+}
+
+.form-page .secondary {
+  background: none;
+  color: #646cff;
 }
