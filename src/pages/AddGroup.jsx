@@ -32,6 +32,7 @@ function AddGroup() {
 
   return (
     <div className="page form-page">
+      <h3>Add a group</h3>
       <GroupForm
         onSubmit={fetchAddGroup}
         initialData={formData}
