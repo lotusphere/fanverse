@@ -5,6 +5,7 @@ import { useGroupContext } from '../GroupContext'
 import { ACTIONS } from '../groupReducer'
 import { supabase } from '../../supabase'
 import TikTokLogo from '../components/TikTokLogo'
+import Navbar from '../components/Navbar'
 
 function GroupDetails() {
   const { state, dispatch } = useGroupContext()
@@ -14,7 +15,11 @@ function GroupDetails() {
 
   async function fetchGroup() {
     dispatch({ type: ACTIONS.FETCH_LOADING })
-    const { data, error } = await supabase.from('groups').select('*').eq('id', id).single()
+    const { data, error } = await supabase
+      .from('groups')
+      .select('*')
+      .eq('id', id)
+      .single()
 
     if (error) {
       dispatch({ type: ACTIONS.FETCH_FAILURE, payload: error.message })
@@ -49,7 +54,7 @@ function GroupDetails() {
 
   return (
     <div className="page">
-      <Link to="/">← Back to Home</Link>
+      <Navbar />
       <div className="group-details">
         <img
           className="details-img"
@@ -61,12 +66,10 @@ function GroupDetails() {
           <TikTokLogo url={group.url} />
           <p className="description">{group.description}</p>
           <div className="buttons">
+            <button onClick={() => fetchDeleteGroup(id)}>Delete</button>
             <Link to={`/groups/${group.id}/edit`}>
               <button>Edit</button>
             </Link>
-            <button className="secondary" onClick={() => fetchDeleteGroup(id)}>
-              Delete
-            </button>
           </div>
         </div>
       </div>

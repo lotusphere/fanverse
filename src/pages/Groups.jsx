@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import { useGroupContext } from '../GroupContext'
 import Card from '../components/Card'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { ACTIONS } from '../groupReducer'
 
 function Groups() {
@@ -27,19 +28,16 @@ function Groups() {
   if (state.errorMessage) return <p>Error: {state.errorMessage}</p>
 
   return (
-    <div className="home">
-      <div className="top-bar">
-        <h2>Fanverse</h2>
-        <Link to="/groups/new">
-          <button>Add a group</button>
-        </Link>
-      </div>
+    <div className="page">
+      <Navbar />
 
       <div className="card-list">
         {state.groups.map((group) => (
           <Card key={group.id} group={group} />
         ))}
       </div>
+
+      <Footer />
     </div>
   )
 }

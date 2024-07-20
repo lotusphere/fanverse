@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import { ACTIONS } from '../groupReducer'
 import { useGroupContext } from '../GroupContext'
@@ -17,7 +16,10 @@ function AddGroup() {
   })
 
   async function fetchAddGroup(formData) {
-    const { data, error } = await supabase.from('groups').insert([formData]).select()
+    const { data, error } = await supabase
+      .from('groups')
+      .insert([formData])
+      .select()
 
     if (error) {
       setErrorMessage(error.message)
@@ -27,16 +29,19 @@ function AddGroup() {
     }
   }
 
+  function handleCancel() {
+    navigate(-1)
+  }
+
   return (
-    <div className="page">
+    <div className="page form-page">
+      <h3>Add a group</h3>
       <GroupForm
         onSubmit={fetchAddGroup}
         initialData={formData}
         errorMessage={state.errorMessage}
       />
-      <div className="cancel-btn">
-        <Link to="/">Cancel</Link>
-      </div>
+      <button className="secondary" onClick={handleCancel}>Cancel</button>
     </div>
   )
 }
