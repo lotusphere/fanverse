@@ -52,6 +52,7 @@ function EditGroup() {
 
   return (
     <div className="page form-page">
+      <h3>Edit the group</h3>
       <GroupForm
         onSubmit={fetchEditGroup}
         initialData={group}
