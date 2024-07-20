@@ -3,6 +3,7 @@ import { supabase } from '../../supabase'
 import { useGroupContext } from '../GroupContext'
 import Card from '../components/Card'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { ACTIONS } from '../groupReducer'
 
 function Groups() {
@@ -35,6 +36,8 @@ function Groups() {
           <Card key={group.id} group={group} />
         ))}
       </div>
+
+      <Footer />
     </div>
   )
 }
