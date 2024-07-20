@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabase'
 import GroupForm from '../components/GroupForm'
@@ -43,6 +42,10 @@ function EditGroup() {
     }
   }
 
+  function handleCancel() {
+    navigate(-1)
+  }
+
   useEffect(() => {
     fetchGroup(id)
   }, [id])
@@ -58,7 +61,7 @@ function EditGroup() {
         initialData={group}
         errorMessage={state.errorMessage}
       />
-      <Link to={`/groups/${group.id}`}>Cancel</Link>
+      <button className="secondary" onClick={handleCancel}>Cancel</button>
     </div>
   )
 }

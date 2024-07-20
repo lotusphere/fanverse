@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
 import { supabase } from '../../supabase'
 import { ACTIONS } from '../groupReducer'
 import { useGroupContext } from '../GroupContext'
@@ -30,6 +29,10 @@ function AddGroup() {
     }
   }
 
+  function handleCancel() {
+    navigate(-1)
+  }
+
   return (
     <div className="page form-page">
       <h3>Add a group</h3>
@@ -38,7 +41,7 @@ function AddGroup() {
         initialData={formData}
         errorMessage={state.errorMessage}
       />
-      <Link to="/">Cancel</Link>
+      <button className="secondary" onClick={handleCancel}>Cancel</button>
     </div>
   )
 }
