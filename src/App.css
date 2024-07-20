@@ -1,40 +1,49 @@
 #root {
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
-.page {
-  margin: 2rem;
+.page button {
+  background: #646cff;
+}
+.page button:hover {
+  background: #747bff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .top-bar {
-  padding: 2rem 2rem 0;
+  padding: 1rem 2rem 0;
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .top-bar h2 {
   margin: 0;
+  color: #646cff;
 }
 
-.top-bar button {
-  background: #646cff;
+.top-bar p {
+  margin-top: .5rem;
 }
 
-.top-bar a {
+.top-bar .buttons {
   margin-right: 0;
   margin-left: auto;
 }
 
 .card-list {
-  margin: 2rem;
+  margin: 1.5rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
 }
 
 .card-title {
-  color: #646cff;
   font-weight: bold;
 }
 
@@ -45,19 +54,28 @@
   object-fit: cover;
 }
 
-.cancel-btn a {
-  display: inline-block;
-  margin: 0 auto;
+.card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.tiktok {
-  width: 0.75rem;
+.card button {
+  padding: 0;
+  background: none;
+  border: none;
+  color: #646cff;
+  margin-right: .5rem;
+}
+.card button:hover {
+  background: none;
+  color: #747bff;
 }
 
 .group-details {
   display: flex;
   gap: 4rem;
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 .details-img {
@@ -75,4 +93,24 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-page h3 {
+  margin-top: 3rem;
+}
+
+.form-page input {
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.form-page button {
+  padding: 0.6rem 1.2rem;
+  background: #646cff;
 }
