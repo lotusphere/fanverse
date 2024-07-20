@@ -44,7 +44,7 @@ button:focus-visible {
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
@@ -59,6 +59,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 1rem;
 }
 
 .card button {
@@ -100,10 +101,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.form-page h3 {
-  margin-top: 3rem;
+  padding: 2rem;
 }
 
 .form-page input {
@@ -119,4 +117,8 @@ button:focus-visible {
 .form-page .secondary {
   background: none;
   color: #646cff;
+  border: none;
+}
+.form-page .secondary:hover {
+  background: none;
 }
